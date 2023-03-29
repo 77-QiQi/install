@@ -1,4 +1,4 @@
-# 安装 Docker & Compose 及更新 Compose 便携版
+# 安装 Docker & Compose 便携版
 
 ## 使用
 
