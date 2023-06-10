@@ -1,0 +1,48 @@
+# nextcloud + mariadb + phpmyadmin
+version: '3.1'
+
+services:
+
+  mariadb:
+    image: mariadb:latest
+    container_name: mariadb
+    command: --sql-mode='' --transaction-isolation=READ-COMMITTED --log-bin=binlog --binlog-format=ROW
+    restart: always
+    ports:
+      - 127.0.0.1:3306:3306
+    environment:
+      MARIADB_ROOT_PASSWORD: root_password
+      MARIADB_DATABASE: example
+      MARIADB_USER: user
+      MARIADB_PASSWORD: user_password
+    volumes:
+      - ./mariadb/data/:/var/lib/mysql/
+
+  nextcloud:
+    image: nextcloud:latest
+    container_name: nextcloud
+    restart: always
+    ports:
+      - 127.0.0.1:8080:80
+    links:
+      - mariadb:mariadb
+    volumes:
+      - ./nextcloud/:/var/www/html
+    environment:
+      MYSQL_PASSWORD: user_password
+      MYSQL_DATABASE: example
+      MYSQL_USER: user
+      MYSQL_HOST: mariadb
+
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: phpmyadmin
+    restart: always
+    ports:
+      - 127.0.0.1:180:80
+    environment:
+      PMA_HOST: mariadb
+      PMA_ABSOLUTE_URI: https://127.0.0.1/
+    links:
+      - mariadb:mariadb
+
