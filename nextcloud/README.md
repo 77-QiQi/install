@@ -1,6 +1,6 @@
 # 使用
 
-## 1. 获取域名及VPS(提前做好DNS解析)
+## 1. 获取域名及VPS(注意可用的存储空间)
 
 
 ## 2. 安装 Docker & Compose
@@ -79,7 +79,7 @@ phpmyadmin 监听本地 180 端口（不开放公网访问）
 'filesystem_check_changes' => 1,
 ```
 
-Transactional File locking :
+Transactional File Locking:
 ```
 'filelocking.enabled' => true,
 'memcache.locking' => '\OC\Memcache\Redis',
