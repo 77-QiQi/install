@@ -79,6 +79,12 @@ phpmyadmin 监听本地 180 端口（不开放公网访问）
 'filesystem_check_changes' => 1,
 ```
 
+Transactional File locking :
+```
+'filelocking.enabled' => true,
+'memcache.locking' => '\OC\Memcache\Redis',
+```
+
 ### 可选的设置二
 
 运行 crontab -e 命令并设置 cron 任务：
