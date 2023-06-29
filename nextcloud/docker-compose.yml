@@ -1,4 +1,4 @@
-# nextcloud + mariadb + phpmyadmin
+# nextcloud + mariadb + redis + phpmyadmin
 version: '3.1'
 
 services:
