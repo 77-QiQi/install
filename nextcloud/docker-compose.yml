@@ -26,6 +26,7 @@ services:
       - 127.0.0.1:8080:80
     links:
       - mariadb:mariadb
+      - redis:redis
     volumes:
       - ./nextcloud/:/var/www/html
     environment:
@@ -33,6 +34,19 @@ services:
       MYSQL_DATABASE: example
       MYSQL_USER: user
       MYSQL_HOST: mariadb
+
+  redis:
+      image: redis:7-bullseye
+      container_name: redis
+      #volumes:
+      #  - ./data/redis:/data/
+      restart: always
+      ports:
+        - "127.0.0.1:6379:6379"
+      environment:
+        - TZ=Asia/Shanghai
+      sysctls:
+        - net.core.somaxconn=4096
 
   phpmyadmin:
     image: phpmyadmin:latest
