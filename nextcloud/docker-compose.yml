@@ -38,8 +38,6 @@ services:
   redis:
       image: redis:7-bullseye
       container_name: redis
-      #volumes:
-      #  - ./redis:/data/
       restart: always
       ports:
         - "127.0.0.1:6379:6379"
@@ -47,6 +45,8 @@ services:
         - TZ=Asia/Shanghai
       sysctls:
         - net.core.somaxconn=4096
+      #volumes:
+      #  - ./redis:/data/
 
   phpmyadmin:
     image: phpmyadmin:latest
