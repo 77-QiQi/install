@@ -38,6 +38,7 @@ services:
   redis:
       image: redis:7-bullseye
       container_name: redis
+      command: redis-server --requirepass redis_password
       restart: always
       ports:
         - "127.0.0.1:6379:6379"
