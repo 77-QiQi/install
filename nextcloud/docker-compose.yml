@@ -39,7 +39,7 @@ services:
       image: redis:7-bullseye
       container_name: redis
       #volumes:
-      #  - ./data/redis:/data/
+      #  - ./redis:/data/
       restart: always
       ports:
         - "127.0.0.1:6379:6379"
