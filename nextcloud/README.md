@@ -85,6 +85,18 @@ Transactional File Locking:
 'memcache.locking' => '\OC\Memcache\Redis',
 ```
 
+Redis:
+```
+'memcache.distributed' => '\OC\Memcache\Redis',
+'redis' => array(
+     'host' => 'redis',
+     'port' => 6379,
+     'dbindex'  => 0,
+     'timeout' => 0.0,
+     'password' => '',
+      ),
+```
+
 ### 可选的设置二
 
 运行 crontab -e 命令并设置 cron 任务：
