@@ -105,3 +105,9 @@ crontab -e
 
 */5  *  *  *  * docker exec -u www-data nextcloud php /var/www/html/cron.php
 ```
+
+nextcloud 容器内安装 aria2 ffmpeg:
+```
+docker exec nextcloud apt update
+docker exec nextcloud apt install aria2 ffmpeg -y
+```
