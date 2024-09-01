@@ -32,7 +32,7 @@ nano docker-compose.yml
 docker-compose up -d
 ```
 
-## 5. 参考 <a href="https://nginx.org/en/linux_packages.html">Nginx文档</a> / <a href="https://httpd.apache.org/docs/">Apache文档</a> 安装Nginx / Apache并设置TLS及反向代理（或者通过其他方式设置TLS及反向代理）
+## 5. 参考 <a href="https://httpd.apache.org/docs/">Apache文档</a> / <a href="https://nginx.org/en/linux_packages.html">Nginx文档</a> 安装 Apache / Nginx 并设置TLS及反向代理（或者通过其他方式设置TLS及反向代理）
 
 ```
 mariadb 监听本地 3306 端口（不开放公网访问）
@@ -110,4 +110,9 @@ nextcloud 容器内安装 aria2 ffmpeg:
 ```
 docker exec nextcloud apt update
 docker exec nextcloud apt install aria2 ffmpeg -y
+```
+
+数据库丢失了一些索引。由于给大的数据表添加索引会耗费一些时间，因此程序没有自动对其进行修复。您可以在 Nextcloud 运行时通过命令行手动执行“occ db:add-missing-indices”命令修复丢失的索引。索引修复后会大大提高相应表的查询速度。
+```
+docker exec -u www-data nextcloud php /var/www/html/occ db:add-missing-indices
 ```
