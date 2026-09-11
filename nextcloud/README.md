@@ -112,7 +112,7 @@ docker exec nextcloud apt update
 docker exec nextcloud apt install aria2 ffmpeg -y
 ```
 
-数据库丢失了一些索引。由于给大的数据表添加索引会耗费一些时间，因此程序没有自动对其进行修复。您可以在 Nextcloud 运行时通过命令行手动执行“occ db:add-missing-indices”命令修复丢失的索引。索引修复后会大大提高相应表的查询速度。
+检测到一些缺失的可选索引。偶尔会添加新的索引（由 Nextcloud 或已安装的应用程序）以提高数据库性能。添加索引有时需要一段时间，并会暂时损害性能，因此在升级过程中不会自动完成。一旦添加了索引，对这些表的查询应该会更快。使用命令 `occ db:add-missing-indices` 来添加索引。
 ```
 docker exec -u www-data nextcloud php /var/www/html/occ db:add-missing-indices
 ```
