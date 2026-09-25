@@ -6,7 +6,7 @@ services:
   mariadb:
     image: mariadb:latest
     container_name: mariadb
-    command: --sql-mode='' --transaction-isolation=READ-COMMITTED --log-bin=binlog --binlog-format=ROW
+    command: --sql-mode='' --transaction-isolation=READ-COMMITTED --log-bin=binlog --binlog-format=ROW --expire-logs-days=7 --slow-query-log=1 --long-query-time=2 --innodb-log-file-size=256M --table-open-cache=32000 --table-definition-cache=8000
     restart: always
     ports:
       - 127.0.0.1:3306:3306
